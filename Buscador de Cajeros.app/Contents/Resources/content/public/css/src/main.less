@@ -1,0 +1,519 @@
+@import 'bootstrap/bootstrap.less';
+@import 'bootstrap/responsive.less';
+@import 'fonts.less';
+@import 'zepto-tooltip.less';
+
+
+// VARIABLES
+// --------------------------------------------------
+
+// General
+// -------------------------
+@imagesPath: '../img';
+
+// Accent colors
+// -------------------------
+@black: #290F11;
+@burgundy: #8D363B;
+@blue: #2B6499;
+@yellow: #FFED87;
+@backgroundColor: #F5F5F5;
+@highlightColor: #FFFD8B;
+@btnPrimaryBackground: #FFFE98;
+@btnPrimaryBackgroundHighlight: #FFD36D;
+
+// Typography
+// -------------------------
+@baseFontSize: 16px;
+@sansFontFamily: "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+// Buttons
+// -------------------------
+@btnBorder: #CD5922;
+
+
+// CUSTOM MIXINS
+// --------------------------------------------------
+
+// Typography
+// -------------------------
+#font {
+  .size(@sizePx) when (ispixel(@sizePx)) {
+    font-size: @sizePx; // Fallback
+    font-size: 1rem * (@sizePx / 16px); // Takes browser default as relative value for accessibility.
+  }
+}
+
+
+// ICONS
+// --------------------------------------------------
+.icon-walking,
+.icon-driving {
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  .ie7-restore-right-whitespace();
+  line-height: 14px;
+  vertical-align: text-top;
+  background-image: url("@{iconSpritePath}");
+  background-position: 14px 14px;
+  background-repeat: no-repeat;
+  margin-top: 1px;
+}
+.icon-walking {
+    background: url('@{imagesPath}/icon-walking.png') 50% 0 no-repeat;
+    .size(14px, 14px);
+}
+.active .icon-walking {
+    background-position: 50% -14px;
+}
+.icon-driving {
+    background: url('@{imagesPath}/icon-driving.png') 50% 0 no-repeat;
+    .size(14px, 17px);
+}
+.active .icon-driving {
+    background-position: 50% -14px;
+}
+
+
+// BASE
+// --------------------------------------------------
+
+// Base
+// -------------------------
+html,
+body {
+  min-width: 312px;
+  height: 100%;
+  overflow: hidden;
+}
+body {
+  background-color: @backgroundColor;
+  #font > #family > .sans-serif;
+  #font > .size(12px);
+  padding: 0;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: bold;
+}
+h1 {
+  #font > .size(22px);
+}
+h5 {
+  font-weight: bold;
+}
+a,
+a:hover {
+  color: @burgundy;
+}
+.mark {
+  color: @highlightColor;
+}
+
+// Forms
+// -------------------------
+textarea:focus,
+input[type="text"]:focus,
+input[type="password"]:focus,
+input[type="datetime"]:focus,
+input[type="datetime-local"]:focus,
+input[type="date"]:focus,
+input[type="month"]:focus,
+input[type="time"]:focus,
+input[type="week"]:focus,
+input[type="number"]:focus,
+input[type="email"]:focus,
+input[type="url"]:focus,
+input[type="search"]:focus,
+input[type="tel"]:focus,
+input[type="color"]:focus,
+.uneditable-input:focus {
+  border-color: @yellow;
+  outline: 0;
+  outline: thin dotted 9;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075),0 0 8px @yellow;
+  -moz-box-shadow: inset 0 1px 1px rgba(0,0,0,0.075),0 0 8px @yellow;
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075),0 0 8px @yellow;
+}
+input:focus:required:invalid:focus,
+textarea:focus:required:invalid:focus,
+select:focus:required:invalid:focus {
+  border-color: @burgundy;
+  -webkit-box-shadow: 0 0 6px #F8B9B7;
+  -moz-box-shadow: 0 0 6px #f8b9b7;
+  box-shadow: 0 0 6px #F8B9B7;
+}
+
+// Buttons
+// -------------------------
+.btn {
+    border-color: #686868;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+.btn-primary {
+  text-shadow: none;
+  &,
+  &:hover {
+    color: #392730;
+  }
+}
+.btn,
+.btn-group > .btn {
+    #font > .size(12px);
+    font-weight: bold;
+    &.active {
+        background-color: #666666;
+        color: white;
+        text-shadow: 0 1px 1px #525252;
+        text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+        z-index: 3;
+    }
+    .full-screen {
+      margin-left: 6px;
+    }
+}
+
+// Tabs
+// -------------------------
+.nav-tabs > li > a {
+  color: @grayLight;
+  font-weight: bold;
+  .border-radius(0);
+  padding-bottom: 12px;
+  &:last-child {
+    margin-right: 0;
+  }
+  [class^="icon-"],
+  [class*=" icon-"] {
+    font-weight: normal;
+    #font > .size(25px);
+    position: relative;
+    top: 6px;
+    top: 0.4rem;
+    margin-right: 5px;
+  }
+}
+.nav-tabs > .active > a,
+.nav-tabs > .active > a:hover {
+  background-color: @backgroundColor;
+  color: @burgundy;
+}
+
+// Layout
+// -------------------------
+.titlebar {
+  #gradient > .vertical(#9C3C41, #823136);
+  position: relative;
+  .clearfix;
+  padding: 5px 10px;
+  .logo {
+    float: left;
+    margin: 0;
+    font-weight: normal;
+    a {
+      color: #FEFEFE;
+      text-decoration: none;
+    }
+    img {
+      margin-top: -5px;
+    }
+    .beta {
+      #font > .size(12px);
+      color: @yellow;
+      display: none;
+    }
+  }
+  .btn-locate.compact {
+    display: inherit;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+  }
+  .form-search {
+    display: none;
+    float: right;
+    margin: -5px 0;
+    border-left: 1px solid #68282B;
+    padding: 6px 0;
+    fieldset {
+      border-left: 1px solid #91383D;
+      padding: 10px 20px;
+      .search-query {
+        margin-left: 15px;
+      }
+    }
+  }
+  .btn {
+    border-color: @black;
+  }
+  .btn-group {
+    .btn.active {
+      background-color: @black;
+    }
+  }
+}
+#content {
+  position: absolute;
+  top: auto;
+  width: 100%;
+  min-width: 243px;
+  height: inherit;
+  z-index: 1;
+  background-color: @backgroundColor;
+  &.inner-page {
+    padding: 30px;
+    width: auto !important;
+    overflow: auto;
+  }
+  .nav-tabs {
+    margin-bottom: 0;
+  }
+}
+#panel-container {
+  position: absolute;
+  top: 48px;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+}
+#footer {
+    #gradient > .vertical(#333333, #131313);
+    color: @grayLight;
+    #font > .size(11px);
+    .clearfix;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    border-top: 1px solid #CCCCCC;
+    a {
+      color: @grayLight;
+      text-decoration: underline;
+      &:hover {
+        color: @grayLighter;
+      }
+    }
+    .form-search,
+    .search-container {
+      background-color: @backgroundColor;
+    }
+    .footer-links {
+      a {
+        float: left;
+        display: block;
+        padding: 8px 14px;
+        border-left: 1px solid rgba(255, 255, 255, 0.1);
+        &:first-child {
+            border-right: 1px solid black;
+            border-left: none;
+        }
+      }
+    }
+    .copy {
+      margin: 8px 14px;
+      margin: 0.5rem 1.2em;
+    }
+}
+.form-search {
+    padding: 10px 0 10px 10px;
+    margin: 0;
+    position: relative;
+    input {
+      #font > .size(12px);
+    }
+    .btn-group {
+        display: inline-block;
+    }
+    .search-container {
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      z-index: 3;
+      padding: 10px 50px 10px 10px;
+      input {
+        width: 220px;
+      }
+    }
+    .btn-search {
+      z-index: 4 !important;
+    }
+}
+.full-screen {
+  display: none;
+}
+
+.location {
+    background-color: #2B1F1F;
+    color: white;
+    width: 100%;
+    z-index: 1;
+    p {
+      line-height: 1.4;
+      padding: 0.8rem;
+      margin: 0;
+    }
+}
+#map-container,
+#map {
+  height: 100%;
+}
+#route-container {
+  padding: 20px;
+  padding: 1.3rem;
+  .distance {
+    color: @burgundy;
+    margin-bottom: 0;
+  }
+  #current-distance {
+    color: @blue;
+  }
+  #current-title {
+    text-transform: uppercase;
+    margin-top: 0;
+  }
+  #current-network {
+    float: right;
+    position: relative;
+    top: -5px;
+    margin-left: 15px;
+  }
+}
+#list-container {
+  .no-results {
+    margin: 1.3rem;
+  }
+}
+#atm-list {
+  list-style: none;
+  margin: 0;
+  li {
+    a {
+      display: block;
+      font-weight: bold;
+      padding: 15px 20px;
+      border-top: 1px solid #DDDDDD;
+      color: @grayLight;
+      text-decoration: none;
+      &.active {
+        #gradient > .vertical(white, #FFFFCD);
+        color: inherit;
+        .distance {
+          color: @blue;
+          font-weight: bold;
+        }
+      }
+      .distance {
+        font-weight: normal;
+      }
+    }
+    &:first-child a {
+      border-top: none;
+    }
+  }
+}
+#about-mobile-pic {
+  padding-bottom: 55px;
+  margin-bottom: 25px;
+}
+
+
+/* ==========================================================================
+   Media Queries for Responsive Design.
+   Theses examples override the primary ('mobile first') styles.
+   Modify as content requires.
+   ========================================================================== */
+
+@media only screen and (min-width: 340px) {
+  .titlebar .logo .beta {
+    display: inline;
+  }
+}
+@media only screen and (min-width: 810px) {
+    #header {
+        .btn-locate.compact {
+            display: none;
+        }
+        .logo {
+          margin: 31px 20px;
+          #font > .size(25px);
+        }
+        .form-search {
+            display: inherit;
+            .search-query {
+              width: 238px;
+            }
+        }
+        .compact-screen {
+          display: none;
+        }
+        .full-screen {
+          display: inherit;
+        }
+    }
+    #content {
+      width: 390px;
+      .box-shadow(0 0 10px 0 @grayLight);
+      .box-shadow(0 0 10px 0 rgba(0, 0, 0, .35));
+      .nav-tabs {
+        a {
+          padding-bottom: 8px;
+        }
+        li:first-child {
+          display: none;
+        }
+      }
+    }
+    #about-mobile-pic {
+      background: url('@{imagesPath}/mobile-pic.png') no-repeat;
+      background-size: contain;
+      padding-left: 240px;
+    }
+    #map {
+      position: absolute !important;
+      right: 0;
+      left: 390px;
+      height: auto;
+    }
+    #footer {
+      .form-search {
+        display: none;
+      }
+    }
+}
+@media only screen and (min-width: 1185px) {
+  #header {
+    .logo {
+      margin-top: 15px;
+      margin-bottom: 15px;
+    }
+    .form-search {
+      padding: 0;
+      fieldset {
+        float: left;
+        padding-top: 24px;
+        padding-bottom: 24px;
+        border-right: 1px solid #68282B;
+        &:last-child {
+          border-right: none;
+        }
+      }
+      .search-query {
+        width: 180px;
+      }
+    }
+  }
+}
+@media only screen and (-webkit-min-device-pixel-ratio: 1.5),
+       only screen and (min-resolution: 144dpi) {
+    /* Style adjustments for viewports that meet the condition */
+}
