@@ -48,28 +48,28 @@ menubar.on('select',function(item){
   console.log("menu item "+item.label+" clicked");
 });
 
-var trayMenu = app.createMenu([{
-  label:'Show',
-  action:function(){
-    window.frame.show();
-  },
-},{
-  label:'Minimize',
-  action:function(){
-    window.frame.hide();
-  }
-},{
-  label:'Exit',
-  action:function(){
-    window.close();
-  }
-}]);
+// var trayMenu = app.createMenu([{
+//   label:'Show',
+//   action:function(){
+//     window.frame.show();
+//   },
+// },{
+//   label:'Minimize',
+//   action:function(){
+//     window.frame.hide();
+//   }
+// },{
+//   label:'Exit',
+//   action:function(){
+//     window.close();
+//   }
+// }]);
 
-var statusIcon = app.createStatusIcon({
-  icon:'./data/content/icons/32.png',
-  tooltip:'AppJS Hello World',
-  menu:trayMenu
-});
+// var statusIcon = app.createStatusIcon({
+//   icon:'./data/content/icons/32.png',
+//   tooltip:'AppJS Hello World',
+//   menu:trayMenu
+// });
 
 var window = app.createWindow({
   width  : 640,
