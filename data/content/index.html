@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]>    <html class="no-js iem7" lang="es-ar"> <![endif]-->
+<!--[if (gt IEMobile 7)|!(IEMobile)]><!--> <html class="no-js" lang="es-ar"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <base href="public/">
+        <title>Buscador de cajeros</title>
+        <meta name="description" content="La forma más fácil de encontrar un cajero cuando lo necesites.">
+        <meta name="HandheldFriendly" content="True">
+        <meta name="MobileOptimized" content="320">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+        <meta http-equiv="cleartype" content="on">
+
+        <meta property="og:title" content="Buscador de cajeros">
+        <meta property="og:image" content="http://buscadordecajeros.com/img/fb.png">
+        <meta property="og:type" content="website">
+        <meta property="og:url" content="http://buscadordecajeros.com/">
+
+        <link rel="apple-touch-icon-precomposed" sizes="144x144" href="img/fb.png">
+        <link rel="apple-touch-icon-precomposed" sizes="114x114" href="img/fb.png">
+        <link rel="apple-touch-icon-precomposed" sizes="72x72" href="img/fb.png">
+        <link rel="apple-touch-icon-precomposed" href="img/fb.png">
+        <link rel="shortcut icon" href="favicon.png">
+
+        <!-- For iOS web apps. Delete if not needed. https://github.com/h5bp/mobile-boilerplate/issues/94 -->
+        <!--
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        -->
+
+        <!-- This script prevents links from opening in Mobile Safari. https://gist.github.com/1042026 -->
+        <!--
+        <script>(function(a,b,c){if(c in b&&b[c]){var d,e=a.location,f=/^(a|html)$/i;a.addEventListener("click",function(a){d=a.target;while(!f.test(d.nodeName))d=d.parentNode;"href"in d&&(d.href.indexOf("http")||~d.href.indexOf(e.host))&&(a.preventDefault(),e.href=d.href)},!1)}})(document,window.navigator,"standalone")</script>
+        -->
+
+        <link rel="stylesheet" href="css/main.css">
+    </head>
+    <body>
+        <div id="header">
+            <div class="titlebar">
+                <h1 class="logo"><a><img src="img/logo.png" alt="">&nbsp; Buscador de cajeros <small class="beta">beta</small></a></h1>
+                <button type="button" class="btn btn-primary btn-locate compact"><i class="icon-location"></i></button>
+                <form class="form-search" action="" method="get">
+                    <fieldset>
+                        <button type="button" class="btn btn-primary btn-locate"><i class="icon-location"></i> Localizarme</button>
+                        <input type="text" class="search-query" placeholder="Ingresá tu dirección">
+                    </fieldset>
+                    <fieldset>
+                        <div class="btn-group">
+                            <!-- Breaks on Android if not on the same line -->
+                            <button type="button" class="btn btn-walk active"><i class="icon-walking"></i><span class="full-screen"> A pie</span></button><button type="button" class="btn btn-drive"><i class="icon-driving"></i><span class="full-screen"> En auto</span></button>
+                        </div>
+                        <div class="btn-group">
+                            <!-- Breaks on Android if not on the same line -->
+                            <button type="button" class="btn btn-network active"><span class="compact-screen">Todos</span><span class="full-screen">Todas las redes</span></button><button type="button" class="btn btn-network-banelco">Banelco</button><button type="button" class="btn btn-network-link">Link</button>
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
+            <div class="location">
+                <p>¡Bienvenido! Hacé click en permitir/compartir tu ubicación para que podamos geolocalizarte.</p>
+            </div>
+        </div>
+
+        <div id="content">
+            <ul class="nav nav-tabs">
+              <li class="active"><a href="#map-container"><i class="icon-map"></i> Mapa</a></li>
+              <li><a href="#route-container"><i class="icon-info-circle"></i> Info.</a></li>
+              <li><a href="#list-container"><i class="icon-list"></i> Lista</a></li>
+            </ul>
+            <div id="panel-container" class="overthrow">
+                <div id="map-container" class="panel fade in">
+                    <div id="map"></div>
+                </div>
+                <div id="route-container" class="panel fade">
+                    <p class="no-results">No hay resultados, ya sea porque no pudimos geolocalizarte o porque no encontramos cajeros cerca tuyo. Ingresá tu dirección para que podamos localizarte.</p>
+                    <img id="current-network" class="hide" src="" alt="">
+                    <p class="distance hide">Distancia: <strong><span id="current-distance"></span></strong></p>
+                    <h5 id="current-title"></h5>
+                    <p id="current-address"></p>
+                    <ol id="route"></ol>
+                </div>
+                <div id="list-container" class="panel fade">
+                    <p class="no-results">No hay resultados, ya sea porque no pudimos geolocalizarte o porque no encontramos cajeros cerca tuyo. Ingresá tu dirección para que podamos localizarte.</p>
+                    <ol id="atm-list"></ol>
+                </div>
+            </div>
+
+        </div>
+
+        <div id="footer">
+            <form class="form-search" action="" method="get">
+                <div class="btn-group">
+                    <!-- Breaks on Android if not on the same line -->
+                    <button type="button" class="btn btn-walk active"><i class="icon-walking"></i><span class="full-screen"> A pie</span></button><button type="button" class="btn btn-drive"><i class="icon-driving"></i><span class="full-screen"> En auto</span></button>
+                </div>
+                <div class="btn-group">
+                    <!-- Breaks on Android if not on the same line -->
+                    <button type="button" class="btn btn-network active"><span class="compact-screen">Todos</span><span class="full-screen">Todas las redes</span></button><button type="button" class="btn btn-network-banelco">Banelco</button><button type="button" class="btn btn-network-link">Link</button>
+                </div>
+                <div class="btn-group">
+                    <button type="button" class="btn btn-search"><i class="icon-search-2"></i></button>
+                </div>
+                <div class="search-container hide fade">
+                    <input type="search" class="search-query" placeholder="Ingresá tu dirección">
+                </div>
+            </form>
+
+            <p class="copy pull-right">Desarrollado por <a href="http://vulsai.com/" rel="external">Vulsai</a></p>
+        </div>
+
+
+        <!-- Load jQuery for IE or Zepto for everybody else -->
+        <script>document.write('<script src=js/vendor/' + ('__proto__' in {} ? 'zepto' : 'jquery') + '.min.js><\/script>')</script>
+        <script src="https://maps.googleapis.com/maps/api/js?sensor=false&language=es"></script>
+        <script src="js/main.min.js"></script>
+
+        <script type="text/javascript">
+            var _gaq=[["_setAccount","UA-34777900-1"],["_trackPageview"]];
+            (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];g.async=1;
+            g.src='http:'+("https:"==location.protocol?"//ssl":"//www")+".google-analytics.com/ga.js";
+            s.parentNode.insertBefore(g,s)}(document,"script"));
+        </script>
+    </body>
+</html>

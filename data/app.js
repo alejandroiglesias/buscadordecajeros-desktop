@@ -1,3 +1,5 @@
+process.title = 'Buscador de Cajeros';
+
 var app = module.exports = require('appjs');
 
 app.serveFilesFrom(__dirname + '/content');
@@ -49,8 +51,6 @@ menubar.on('select',function(item){
 });
 
 var window = app.createWindow({
-  width  : 640,
-  height : 460,
   icons  : __dirname + '/content/icons'
 });
 
@@ -58,6 +58,7 @@ window.on('create', function(){
   console.log("Window Created");
   window.frame.show();
   window.frame.center();
+  window.frame.maximize();
   window.frame.setMenuBar(menubar);
 });
 
