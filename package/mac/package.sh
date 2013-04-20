@@ -14,9 +14,9 @@ if [ -d ${TARDIR} ]; then
 fi;
 
 mkdir -p ${TARDIR};
-cp -Rpa ${MACDIR}/AppBundle.skel.app ${TARDIR}/AppJS_Example.app;
-cp -Rpa ${basedir}/data/bin/* ${TARDIR}/AppJS_Example.app/Contents/MacOS/bin/;
-cp -Rpa ${basedir}/data/node_modules ${TARDIR}/AppJS_Example.app/Contents/MacOS/;
-cp -Rpa ${basedir}/data/content ${TARDIR}/AppJS_Example.app/Contents/Resources/;
-cp -Rpa ${basedir}/data/app.js ${TARDIR}/AppJS_Example.app/Contents/Resources/;
-open ${TARDIR}/AppJS_Example.app;
+cp -Rpa ${MACDIR}/AppBundle.skel.app ${TARDIR}/Buscador_de_Cajeros.app;
+cp -Rpa ${basedir}/data/bin/* ${TARDIR}/Buscador_de_Cajeros.app/Contents/MacOS/bin/;
+cp -Rpa ${basedir}/data/node_modules ${TARDIR}/Buscador_de_Cajeros.app/Contents/MacOS/;
+cp -Rpa ${basedir}/data/content ${TARDIR}/Buscador_de_Cajeros.app/Contents/Resources/;
+cp -Rpa ${basedir}/data/app.js ${TARDIR}/Buscador_de_Cajeros.app/Contents/Resources/;
+open ${TARDIR}/Buscador_de_Cajeros.app;
