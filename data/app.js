@@ -57,6 +57,7 @@ var window = app.createWindow({
 window.on('create', function(){
   console.log("Window Created");
   window.frame.show();
+  window.frame.focus();
   window.frame.center();
   window.frame.maximize();
   window.frame.setMenuBar(menubar);
